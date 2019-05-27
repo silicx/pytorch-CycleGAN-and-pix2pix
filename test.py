@@ -64,7 +64,7 @@ if __name__ == '__main__':
             print('processing (%04d)-th image... %s' % (i, img_path))
 
         #################################################################################
-        short_path = ntpath.basename(image_path[0])
+        short_path = ntpath.basename(img_path[0])
         name = os.path.splitext(short_path)[0]
         im = util.tensor2im(visuals['fake_B'])
         image_name = '%s.png' % (name)
