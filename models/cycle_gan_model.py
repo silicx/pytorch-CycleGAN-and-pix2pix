@@ -3,7 +3,7 @@ import itertools
 from util.image_pool import ImagePool
 from .base_model import BaseModel
 from . import networks
-from .MLP_cyclegan import MLPDiscriminator, MLPGenerator
+#from .MLP_cyclegan import MLPDiscriminator, MLPGenerator
 
 
 class CycleGANModel(BaseModel):
