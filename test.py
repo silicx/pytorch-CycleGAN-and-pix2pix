@@ -32,7 +32,7 @@ from data import create_dataset
 from models import create_model
 from util.visualizer import save_images
 from util import html, util
-import ntpath
+import ntpath, logging
 
 
 if __name__ == '__main__':
@@ -62,7 +62,7 @@ if __name__ == '__main__':
         visuals = model.get_current_visuals()  # get image results
         img_path = model.get_image_paths()     # get image paths
         if i % 100 == 0:  # save images to an HTML file
-            print('processing (%04d)-th image... %s' % (i, img_path))
+            logging.info('processing (%04d)-th image... %s' % (i, img_path))
 
         #################################################################################
         short_path = ntpath.basename(img_path[0])
