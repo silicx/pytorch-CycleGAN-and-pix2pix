@@ -49,6 +49,7 @@ if __name__ == '__main__':
 
     # create a website
     image_dir = os.path.join(opt.results_dir, opt.name)
+    os.makedirs(image_dir, exist_ok=True)
     #webpage = html.HTML(web_dir, 'Experiment = %s, Phase = %s, Epoch = %s' % (opt.name, opt.phase, opt.epoch))
 
     if opt.eval:
