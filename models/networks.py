@@ -4,7 +4,7 @@ from torch.nn import init
 import functools
 from torch.optim import lr_scheduler
 
-import MLP_cyclegan
+import models.MLP_cyclegan
 
 ###############################################################################
 # Helper Functions

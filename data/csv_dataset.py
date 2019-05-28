@@ -23,11 +23,30 @@ class CSVDataset(BaseDataset):
             opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
         BaseDataset.__init__(self, opt)
-        self.dir_A = os.path.join(opt.dataroot, opt.phase + 'A')  # create a path '/path/to/data/trainA'
-        self.dir_B = os.path.join(opt.dataroot, opt.phase + 'B')  # create a path '/path/to/data/trainB'
+        self.dir_A = os.path.join(opt.dataroot, opt.phase+'A') # create a path '/path/to/data/trainA'
+        self.dir_B = os.path.join(opt.dataroot, opt.phase+'B') # create a path '/path/to/data/trainB'
 
-        self.A_paths = sorted(make_dataset(self.dir_A, opt.max_dataset_size))   # load images from '/path/to/data/trainA'
-        self.B_paths = sorted(make_dataset(self.dir_B, opt.max_dataset_size))    # load images from '/path/to/data/trainB'
+        self.A_data = []
+        self.A_label= []
+        with open(self.dir_A, 'r') as fp:
+            for line in fp:
+                line = [float(x) for x in line.strip().split(',')]
+                self.A_data.append(line[:2048])
+                self.A_label.append(int(round[2048]))
+        self.A_data = np.array(self.A_data)
+        self.A_label = np.array(self.A_label)
+
+        self.B_data = []
+        self.B_label= []
+        with open(self.dir_B, 'r') as fp:
+            for line in fp:
+                line = [float(x) for x in line.strip().split(',')]
+                self.B_data.append(line[:2048])
+                self.B_label.append(int(round[2048]))
+        self.B_data = np.array(self.B_data)
+        self.B_label = np.array(self.B_label)
+        
+        
         self.A_size = len(self.A_paths)  # get the size of dataset A
         self.B_size = len(self.B_paths)  # get the size of dataset B
         btoA = self.opt.direction == 'BtoA'
